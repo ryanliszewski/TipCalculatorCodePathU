@@ -21,6 +21,5 @@ class SettingsViewController: UIViewController {
   @IBAction func onSegmentedTipValueChanged(_ sender: Any) {
     let defaults = UserDefaults.standard
     
-    
   }
 }

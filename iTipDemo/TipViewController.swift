@@ -84,7 +84,7 @@ class TipViewController: UIViewController {
   
   func animateViewUp(){
     if (!(totalAmountTextField.text?.isEmpty)!){
-      UIView.animate(withDuration: 3.0) {
+      UIView.animate(withDuration: 0.3) {
         self.totalAmountView.frame.origin.y = self.totalAmountView.frame.origin.y -  self.totalAmountView.frame.size.height / 2 +  self.totalAmountTextField.frame.size.height
         
         self.tipAmountView.frame.origin.y = self.tipAmountView.frame.origin.y - self.tipAmountView.frame.height
