@@ -17,7 +17,6 @@ class TipViewController: UIViewController {
     static let percentage25 = 0.25
   }
   
-  
   @IBOutlet weak var tipAmountLabel: UILabel!
   @IBOutlet weak var totalAmountLabel: UILabel!
   
@@ -49,10 +48,21 @@ class TipViewController: UIViewController {
     
     totalAmountTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
   }
-
+  
+  fileprivate func addNextBackKeyboardToolBar(){
+    //FINISH
+    let nextBackToolBar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 50.0))
+    
+    let nextButton = UIBarButtonItem(barButtonSystemItem: <#T##UIBarButtonSystemItem#>, target: <#T##Any?#>, action: <#T##Selector?#>)
+    let backButton = UIBarButtonItem(barButtonSystemItem: <#T##UIBarButtonSystemItem#>, target: <#T##Any?#>, action: <#T##Selector?#>)
+    let items = [nextButton,backButton]
+    nextBackToolBar.items = items
+    nextBackToolBar.sizeToFit()
+    totalAmountTextField.inputAccessoryView = nextBackToolBar
+  }
   
   
-  @objc func textFieldDidChange(_ textField: UITextField)
+  @objc fileprivate func textFieldDidChange(_ textField: UITextField)
   {
     if(!(textField.text?.isEmpty)! && !isViewAnimatedUp){
       animateViewUp()

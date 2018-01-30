@@ -16,6 +16,7 @@
 		7383F8D31FD9EACF00D7AD1C /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7383F8D21FD9EACF00D7AD1C /* TipViewController.swift */; };
 		7383F8D51FD9EAE100D7AD1C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7383F8D41FD9EAE100D7AD1C /* Home.storyboard */; };
 		7383F8D71FDA179900D7AD1C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7383F8D61FDA179900D7AD1C /* SettingsViewController.swift */; };
+		73A0C08A201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0C089201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		7383F8D21FD9EACF00D7AD1C /* TipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
 		7383F8D41FD9EAE100D7AD1C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		7383F8D61FDA179900D7AD1C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		73A0C089201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNextKeyboardToolBarExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				7383F8D21FD9EACF00D7AD1C /* TipViewController.swift */,
 				7383F8D41FD9EAE100D7AD1C /* Home.storyboard */,
 				7383F8D61FDA179900D7AD1C /* SettingsViewController.swift */,
+				73A0C089201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift */,
 			);
 			path = iTipDemo;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				7383F8D31FD9EACF00D7AD1C /* TipViewController.swift in Sources */,
 				7383F8A21FD9EAC100D7AD1C /* AppDelegate.swift in Sources */,
 				7383F8D71FDA179900D7AD1C /* SettingsViewController.swift in Sources */,
+				73A0C08A201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
