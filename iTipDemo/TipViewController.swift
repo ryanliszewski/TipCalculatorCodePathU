@@ -67,6 +67,7 @@ class TipViewController: UIViewController {
   }
   
   func calculateTip(stringAmount: String){
+    
     let amount = Double(stringAmount)
     
     let tipAmount = amount! * tipAmounts[segmentedTipControl.selectedSegmentIndex]
@@ -78,6 +79,7 @@ class TipViewController: UIViewController {
   
   
   @IBAction func segmentedControllerValuedDidChange(_ sender: Any) {
+    
     calculateTip(stringAmount: totalAmountTextField.text!)
   }
   
