@@ -47,20 +47,35 @@ class TipViewController: UIViewController {
     tipAmountViewOriginY = tipAmountView.frame.origin.y
     
     totalAmountTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    
+    addNextBackKeyboardToolBar()
   }
   
   fileprivate func addNextBackKeyboardToolBar(){
     //FINISH
     let nextBackToolBar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 50.0))
     
-    let nextButton = UIBarButtonItem(barButtonSystemItem: <#T##UIBarButtonSystemItem#>, target: <#T##Any?#>, action: <#T##Selector?#>)
-    let backButton = UIBarButtonItem(barButtonSystemItem: <#T##UIBarButtonSystemItem#>, target: <#T##Any?#>, action: <#T##Selector?#>)
-    let items = [nextButton,backButton]
+    let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+  
+    let nextButton = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(self.onNextButtonTapped))
+    nextButton.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+    let backButton = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(self.onBackButtonTapped))
+    backButton.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+    
+    let items = [backButton, flexSpace, nextButton]
     nextBackToolBar.items = items
     nextBackToolBar.sizeToFit()
+    nextBackToolBar.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
     totalAmountTextField.inputAccessoryView = nextBackToolBar
   }
   
+  @objc fileprivate func onNextButtonTapped(){
+    print("Next Button Tapped")
+  }
+  
+  @objc fileprivate func onBackButtonTapped(){
+    print("Back button tapped")
+  }
   
   @objc fileprivate func textFieldDidChange(_ textField: UITextField)
   {
