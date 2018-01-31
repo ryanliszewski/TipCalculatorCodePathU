@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SkyFloatingLabelTextField
 
-class TipViewController: UIViewController {
+class TipViewController: UIViewController, UIToolbarDelegate {
   
   enum tip {
     static let percentage15 = 0.15
@@ -19,14 +20,13 @@ class TipViewController: UIViewController {
   
   @IBOutlet weak var tipAmountLabel: UILabel!
   @IBOutlet weak var totalAmountLabel: UILabel!
-  
+	@IBOutlet weak var totalAmountTextField: SkyFloatingLabelTextField!
   var isViewAnimatedUp: Bool = false
   var totalAmountViewOriginY: CGFloat?
   var segmentedTipControlViewOriginY: CGFloat?
   var tipAmountViewOriginY: CGFloat?
  
   @IBOutlet weak var totalAmountView: UIView!
-  @IBOutlet weak var totalAmountTextField: UITextField!
   @IBOutlet weak var segmentedTipControlView: UIView!
   @IBOutlet weak var segmentedTipControl: UISegmentedControl!
   @IBOutlet weak var tipAmountView: UIView!
@@ -41,12 +41,11 @@ class TipViewController: UIViewController {
     
     totalAmountTextField.becomeFirstResponder()
 		
-		
-		totalAmountTextField.attributedPlaceholder = NSAttributedString(string: "Enter total Bill", attributes: [NSAttributedStringKey.font: UIFont(name: "Arial", size: 20)!])
+		totalAmountTextField.textAlignment = .center
 		
 		let font = UIFont(name: "Arial", size: 36)!
 		let attributes = [NSAttributedStringKey.font : font]
-		
+
 		totalAmountTextField.attributedPlaceholder = NSAttributedString(string: "Enter the Total Bill",
 																												 attributes:attributes)
 		
@@ -61,19 +60,19 @@ class TipViewController: UIViewController {
   
   fileprivate func addNextBackKeyboardToolBar(){
     //FINISH
-    let nextBackToolBar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 50.0))
+    let nextBackToolBar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44.0))
     
     let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-  
+
     let nextButton = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(self.onNextButtonTapped))
     nextButton.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
     let backButton = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(self.onBackButtonTapped))
     backButton.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-    
-    let items = [backButton, flexSpace, nextButton]
+		
+		let items = [backButton, flexSpace, nextButton]
     nextBackToolBar.items = items
-    nextBackToolBar.sizeToFit()
     nextBackToolBar.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+		nextBackToolBar.delegate = self
     totalAmountTextField.inputAccessoryView = nextBackToolBar
   }
   
@@ -131,11 +130,11 @@ class TipViewController: UIViewController {
   func animateViewUp(){
     if (!(totalAmountTextField.text?.isEmpty)!){
       UIView.animate(withDuration: 0.3) {
-        self.totalAmountView.frame.origin.y = self.totalAmountView.frame.origin.y -  self.totalAmountView.frame.size.height / 2 +  self.totalAmountTextField.frame.size.height
+        self.totalAmountView.frame.origin.y = self.totalAmountView.frame.origin.y -  self.totalAmountView.frame.size.height / 1.5 +  self.totalAmountTextField.frame.size.height
         
-        self.tipAmountView.frame.origin.y = self.tipAmountView.frame.origin.y - self.tipAmountView.frame.height
+        self.tipAmountView.frame.origin.y = self.tipAmountView.frame.origin.y - self.tipAmountView.frame.height * 1.5
         
-        self.segmentedTipControlView.frame.origin.y = self.segmentedTipControlView.frame.origin.y - self.tipAmountView.frame.height
+        self.segmentedTipControlView.frame.origin.y = self.segmentedTipControlView.frame.origin.y - self.tipAmountView.frame.height * 1.5
         
         self.segmentedTipControl.alpha = 1
         self.tipAmountView.alpha = 1
