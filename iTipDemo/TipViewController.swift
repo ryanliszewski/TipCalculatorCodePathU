@@ -97,9 +97,20 @@ class TipViewController: UIViewController {
     
     let tipAmount = amount! * tipAmounts[segmentedTipControl.selectedSegmentIndex]
     let totalAmount = amount! + tipAmount
+		
+		let formatter = NumberFormatter()
+		formatter.locale = Locale.current
+		
+		formatter.numberStyle = .currency
+		
     
-    tipAmountLabel.text = String(format:"$%.2f", tipAmount)
-    totalAmountLabel.text = String(format:"$%.2f", totalAmount)
+		if let formattedTipAmount = formatter.string(from: tipAmount as NSNumber) {
+			tipAmountLabel.text = formattedTipAmount
+		}
+		
+		if let formattedTotalAmount = formatter.string(from: totalAmount as NSNumber) {
+			totalAmountLabel.text = formattedTotalAmount
+		}
   }
   
   
