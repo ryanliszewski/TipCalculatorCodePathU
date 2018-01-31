@@ -30,11 +30,15 @@ class TipViewController: UIViewController, UIToolbarDelegate {
   @IBOutlet weak var segmentedTipControlView: UIView!
   @IBOutlet weak var segmentedTipControl: UISegmentedControl!
   @IBOutlet weak var tipAmountView: UIView!
+	
+	var backButton = UIBarButtonItem()
   
   var tipAmounts = [0.15, 0.18, 0.20, 0.25]
   
   override func viewDidLoad() {
         super.viewDidLoad()
+		
+		
 		
 		segmentedTipControl.layer.cornerRadius = 10.0
 		segmentedTipControl.layer.masksToBounds = true
@@ -85,7 +89,7 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 
     let nextButton = UIBarButtonItem(title: "Next", style: .done, target: self, action: #selector(self.onNextButtonTapped))
     nextButton.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
-    let backButton = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(self.onBackButtonTapped))
+    backButton = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(self.onBackButtonTapped))
     backButton.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
 		
 		let items = [backButton, flexSpace, nextButton]
@@ -96,7 +100,7 @@ class TipViewController: UIViewController, UIToolbarDelegate {
   }
   
   @objc fileprivate func onNextButtonTapped(){
-    print("Next Button Tapped")
+    backButton.title = "Bill"
   }
   
   @objc fileprivate func onBackButtonTapped(){
