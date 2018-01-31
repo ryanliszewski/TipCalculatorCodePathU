@@ -20,5 +20,4 @@ extension UITextField {
 			self.attributedPlaceholder = NSAttributedString(string:self.placeholder != nil ? self.placeholder! : "", attributes:[NSAttributedStringKey.foregroundColor: newValue!])
 		}
 	}
-	
 }

@@ -41,6 +41,15 @@ class TipViewController: UIViewController {
     
     totalAmountTextField.becomeFirstResponder()
 		
+		
+		totalAmountTextField.attributedPlaceholder = NSAttributedString(string: "Enter total Bill", attributes: [NSAttributedStringKey.font: UIFont(name: "Arial", size: 20)!])
+		
+		let font = UIFont(name: "Arial", size: 36)!
+		let attributes = [NSAttributedStringKey.font : font]
+		
+		totalAmountTextField.attributedPlaceholder = NSAttributedString(string: "Enter the Total Bill",
+																												 attributes:attributes)
+		
     totalAmountViewOriginY = totalAmountView.frame.origin.y
     segmentedTipControlViewOriginY = segmentedTipControlView.frame.origin.y
     tipAmountViewOriginY = tipAmountView.frame.origin.y
@@ -91,24 +100,24 @@ class TipViewController: UIViewController {
   }
   
   func calculateTip(stringAmount: String){
-    
-    let amount = Double(stringAmount)
-    
-    let tipAmount = amount! * tipAmounts[segmentedTipControl.selectedSegmentIndex]
-    let totalAmount = amount! + tipAmount
 		
-		let formatter = NumberFormatter()
-		formatter.locale = Locale.current
-		
-		formatter.numberStyle = .currency
-		
-    
-		if let formattedTipAmount = formatter.string(from: tipAmount as NSNumber) {
-			tipAmountLabel.text = formattedTipAmount
-		}
-		
-		if let formattedTotalAmount = formatter.string(from: totalAmount as NSNumber) {
-			totalAmountLabel.text = formattedTotalAmount
+		if let amount = Double(stringAmount){
+			let tipAmount = amount * tipAmounts[segmentedTipControl.selectedSegmentIndex]
+			let totalAmount = amount + tipAmount
+			
+			let formatter = NumberFormatter()
+			formatter.locale = Locale.current
+			
+			formatter.numberStyle = .currency
+			
+			
+			if let formattedTipAmount = formatter.string(from: tipAmount as NSNumber) {
+				tipAmountLabel.text = formattedTipAmount
+			}
+			
+			if let formattedTotalAmount = formatter.string(from: totalAmount as NSNumber) {
+				totalAmountLabel.text = formattedTotalAmount
+			}
 		}
   }
   
