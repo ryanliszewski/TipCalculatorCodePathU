@@ -19,6 +19,7 @@
 		7383F8D51FD9EAE100D7AD1C /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7383F8D41FD9EAE100D7AD1C /* Home.storyboard */; };
 		7383F8D71FDA179900D7AD1C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7383F8D61FDA179900D7AD1C /* SettingsViewController.swift */; };
 		73A0C08A201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A0C089201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift */; };
+		73A79B1620219E4B003DACDD /* AddDropShadowExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73A79B1520219E4B003DACDD /* AddDropShadowExtension.swift */; };
 		73D8AE5320215AE400A095DC /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73D8AE5220215AE400A095DC /* UITextFieldExtension.swift */; };
 		C9414B1BB312E55CE713F3C0 /* Pods_iTipDemoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FB55EF721B78E9E70E97133 /* Pods_iTipDemoUITests.framework */; };
 /* End PBXBuildFile section */
@@ -61,6 +62,7 @@
 		7383F8D41FD9EAE100D7AD1C /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		7383F8D61FDA179900D7AD1C /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		73A0C089201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackNextKeyboardToolBarExtension.swift; sourceTree = "<group>"; };
+		73A79B1520219E4B003DACDD /* AddDropShadowExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDropShadowExtension.swift; sourceTree = "<group>"; };
 		73D8AE5220215AE400A095DC /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		955BB3E6AACA8F7119EBD0DA /* Pods-iTipDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTipDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iTipDemoUITests/Pods-iTipDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9FB55EF721B78E9E70E97133 /* Pods_iTipDemoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTipDemoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 				7383F8A81FD9EAC100D7AD1C /* iTipDemo.xcdatamodeld */,
 				7383F8D21FD9EACF00D7AD1C /* TipViewController.swift */,
 				7383F8D41FD9EAE100D7AD1C /* Home.storyboard */,
+				73A79B1520219E4B003DACDD /* AddDropShadowExtension.swift */,
 				73D8AE5220215AE400A095DC /* UITextFieldExtension.swift */,
 				7383F8D61FDA179900D7AD1C /* SettingsViewController.swift */,
 				73A0C089201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift */,
@@ -473,6 +476,7 @@
 				7383F8AA1FD9EAC100D7AD1C /* iTipDemo.xcdatamodeld in Sources */,
 				73D8AE5320215AE400A095DC /* UITextFieldExtension.swift in Sources */,
 				7383F8D31FD9EACF00D7AD1C /* TipViewController.swift in Sources */,
+				73A79B1620219E4B003DACDD /* AddDropShadowExtension.swift in Sources */,
 				7383F8A21FD9EAC100D7AD1C /* AppDelegate.swift in Sources */,
 				7383F8D71FDA179900D7AD1C /* SettingsViewController.swift in Sources */,
 				73A0C08A201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift in Sources */,

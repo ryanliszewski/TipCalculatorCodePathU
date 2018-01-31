@@ -18,7 +18,9 @@ class TipViewController: UIViewController, UIToolbarDelegate {
     static let percentage25 = 0.25
   }
   
-  @IBOutlet weak var tipAmountLabel: UILabel!
+	@IBOutlet weak var numberOfPeopleView: UIView!
+	@IBOutlet weak var numberOfPeopleCollectionView: UICollectionView!
+	@IBOutlet weak var tipAmountLabel: UILabel!
   @IBOutlet weak var totalAmountLabel: UILabel!
 	@IBOutlet weak var totalAmountTextField: SkyFloatingLabelTextField!
   var isViewAnimatedUp: Bool = false
@@ -49,6 +51,7 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 		setUpTotalAmountView()
 		setUpSegmentedControl()
     addNextBackKeyboardToolBar()
+		setUpNumberOfPeopleView()
   }
 	
   func calculateTip(stringAmount: String){
@@ -61,7 +64,6 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 			formatter.locale = Locale.current
 			
 			formatter.numberStyle = .currency
-			
 			
 			if let formattedTipAmount = formatter.string(from: tipAmount as NSNumber) {
 				tipAmountLabel.text = formattedTipAmount
@@ -94,15 +96,8 @@ extension TipViewController {
 		totalAmountTextField.inputAccessoryView = nextBackToolBar
 	}
 	
-	
 	fileprivate func setUpTipAmountView(){
-		tipAmountView.layer.cornerRadius = 10.0
-		tipAmountView.layer.borderWidth = 5.0
-		tipAmountView.layer.borderColor = UIColor.clear.cgColor
-		tipAmountView.layer.shadowColor = UIColor.gray.cgColor
-		tipAmountView.layer.shadowOffset = CGSize(width: 5, height: 5)
-		tipAmountView.layer.shadowOpacity = 0.5
-		tipAmountView.layer.shadowRadius = 5.0
+		tipAmountView.addDropShadow()
 		tipAmountView.alpha = 0
 		
 		tipAmountViewOriginY = tipAmountView.frame.origin.y
@@ -111,7 +106,7 @@ extension TipViewController {
 	fileprivate func setUpTotalAmountView(){
 		totalAmountTextField.becomeFirstResponder()
 		totalAmountTextField.textAlignment = .center
-		let font = UIFont(name: "HelveticaNueue", size: 36)!
+		let font = UIFont(name: "HelveticaNeue", size: 36)!
 		let attributes = [NSAttributedStringKey.font : font]
 		
 		totalAmountTextField.attributedPlaceholder = NSAttributedString(string: "Enter the Total Bill",
@@ -135,8 +130,11 @@ extension TipViewController {
 		
 		segmentedTipControlViewOriginY = segmentedTipControlView.frame.origin.y
 	}
+	
+	fileprivate func setUpNumberOfPeopleView(){
+		numberOfPeopleView.addDropShadow()
+	}
 }
-
 
 //MARK: - UI Actions
 extension TipViewController {
@@ -193,6 +191,11 @@ extension TipViewController {
 			self.tipAmountView.alpha = 0
 		}
 	}
+}
+
+//MARK - CollectionView
+extension TipViewController {
+	//FINISH
 }
 
 
