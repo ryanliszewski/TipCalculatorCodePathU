@@ -29,7 +29,6 @@ class TipViewController: UIViewController {
   @IBOutlet weak var totalAmountTextField: UITextField!
   @IBOutlet weak var segmentedTipControlView: UIView!
   @IBOutlet weak var segmentedTipControl: UISegmentedControl!
-  
   @IBOutlet weak var tipAmountView: UIView!
   
   var tipAmounts = [0.15, 0.18, 0.20, 0.25]
@@ -41,7 +40,7 @@ class TipViewController: UIViewController {
     tipAmountView.alpha = 0
     
     totalAmountTextField.becomeFirstResponder()
-    
+		
     totalAmountViewOriginY = totalAmountView.frame.origin.y
     segmentedTipControlViewOriginY = segmentedTipControlView.frame.origin.y
     tipAmountViewOriginY = tipAmountView.frame.origin.y
