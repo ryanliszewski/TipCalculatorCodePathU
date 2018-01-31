@@ -38,6 +38,27 @@ class TipViewController: UIViewController, UIToolbarDelegate {
     
     segmentedTipControl.alpha = 0
     tipAmountView.alpha = 0
+		tipAmountView.layer.cornerRadius = 5.0
+		
+		tipAmountView.layer.borderWidth = 5.0
+		tipAmountView.layer.borderColor = UIColor.clear.cgColor
+		
+		// shadow
+		tipAmountView.layer.shadowColor = UIColor.gray.cgColor
+		tipAmountView.layer.shadowOffset = CGSize(width: 5, height: 5)
+		tipAmountView.layer.shadowOpacity = 0.5
+		tipAmountView.layer.shadowRadius = 5.0
+		
+		
+//		view.layer.cornerRadius = 5.0
+//		view.layer.borderColor  =  UIColor.clear.cgColor
+//		view.layer.borderWidth = 5.0
+//		view.layer.shadowOpacity = 0.5
+//		view.layer.shadowColor =  UIColor.lightGray.cgColor
+//		view.layer.shadowRadius = 5.0
+//		view.layer.shadowOffset = CGSize(width:5, height: 5)
+//		view.layer.masksToBounds = true
+		
     
     totalAmountTextField.becomeFirstResponder()
 		
