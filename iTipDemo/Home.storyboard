@@ -68,6 +68,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iconmonstr-user-1-240 (1)" translatesAutoresizingMaskIntoConstraints="NO" id="O6L-7H-cDe">
+                                        <rect key="frame" x="8" y="8" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -225,4 +229,7 @@
             <point key="canvasLocation" x="-612" y="91"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="iconmonstr-user-1-240 (1)" width="240" height="240"/>
+    </resources>
 </document>
