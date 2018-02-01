@@ -56,10 +56,31 @@ import UIKit
 		
 		UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: .allowAnimatedContent, animations: {
 			self.thumbView.frame = label.frame
+			self.thumbView.layer.shadowRadius = 100.0
+			self.updateThumbViewShadow(index: self.selectedIndex)
+			
+			
 		}) { (completion) in
 			//TODO
 		}
 	}
+	
+	func updateThumbViewShadow(index: Int){
+		switch index {
+		case 0:
+			thumbView.layer.shadowRadius = 5.0
+			thumbView.layer.shadowOffset = CGSize(width: 5, height: 0)
+			break
+		case items.count - 1:
+			thumbView.layer.shadowRadius = 5.0
+			thumbView.layer.shadowOffset = CGSize(width: -5, height: 0)
+			break
+		default:
+			thumbView.layer.shadowRadius = 10.0
+			thumbView.layer.shadowOffset = CGSize(width: 0, height: 0)
+		}
+	}
+	
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
@@ -70,6 +91,10 @@ import UIKit
 		thumbView.frame = selectFrame
 		thumbView.backgroundColor = thumbColor
 		thumbView.layer.cornerRadius = thumbView.frame.height / 2
+		thumbView.layer.shadowOpacity = 1.0
+		thumbView.layer.shadowRadius = 5.0
+		thumbView.layer.shadowColor = UIColor.gray.cgColor
+		updateThumbViewShadow(index: selectedIndex)
 		
 		let labelHeight = self.frame.height
 		let labelWidth = self.frame.width / CGFloat(labels.count)
@@ -163,7 +188,7 @@ import UIKit
 		setUpView()
 	}
 	
-	func setUpView(){
+	func setUpView(){		
 		layer.cornerRadius = frame.height / 2
 		layer.borderColor = UIColor(white: 1.0, alpha: 0.5).cgColor
 		layer.borderWidth = 2
