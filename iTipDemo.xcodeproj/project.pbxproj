@@ -112,6 +112,34 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7301A4672022F0AE001C46C7 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				7383F8AD1FD9EAC100D7AD1C /* LaunchScreen.storyboard */,
+				7383F8D41FD9EAE100D7AD1C /* Home.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		736DD1632022F0410058E531 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				73D8AE5220215AE400A095DC /* UITextFieldExtension.swift */,
+				73A0C089201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift */,
+				73A79B1520219E4B003DACDD /* AddDropShadowExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		736DD1642022F0580058E531 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7383F8D61FDA179900D7AD1C /* SettingsViewController.swift */,
+				7383F8D21FD9EACF00D7AD1C /* TipViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		7383F8951FD9EAC100D7AD1C = {
 			isa = PBXGroup;
 			children = (
@@ -139,15 +167,11 @@
 			children = (
 				7383F8A11FD9EAC100D7AD1C /* AppDelegate.swift */,
 				7383F8AB1FD9EAC100D7AD1C /* Assets.xcassets */,
-				7383F8AD1FD9EAC100D7AD1C /* LaunchScreen.storyboard */,
 				7383F8B01FD9EAC100D7AD1C /* Info.plist */,
 				7383F8A81FD9EAC100D7AD1C /* iTipDemo.xcdatamodeld */,
-				7383F8D21FD9EACF00D7AD1C /* TipViewController.swift */,
-				7383F8D41FD9EAE100D7AD1C /* Home.storyboard */,
-				73A79B1520219E4B003DACDD /* AddDropShadowExtension.swift */,
-				73D8AE5220215AE400A095DC /* UITextFieldExtension.swift */,
-				7383F8D61FDA179900D7AD1C /* SettingsViewController.swift */,
-				73A0C089201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift */,
+				7301A4672022F0AE001C46C7 /* Storyboards */,
+				736DD1642022F0580058E531 /* View Controllers */,
+				736DD1632022F0410058E531 /* Extensions */,
 			);
 			path = iTipDemo;
 			sourceTree = "<group>";
