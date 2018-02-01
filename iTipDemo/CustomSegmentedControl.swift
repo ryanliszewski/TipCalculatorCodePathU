@@ -8,12 +8,12 @@
 
 import UIKit
 
-@IBDesignable class SegmentedControl: UIControl {
+@IBDesignable class CustomSegmentedControl: UIControl {
 	
 	private var labels = [UILabel]()
-	var thumbview = UIView()
+	var thumbView = UIView()
 	
-	var items:[String] = ["Item1", "Item2", "Item3"] {
+	var items:[String] = ["15%", "20%", "25%"] {
 		didSet {
 			setUpLabels()
 		}
@@ -40,13 +40,14 @@ import UIKit
 			label.textAlignment = .center
 			label.font = UIFont(name: "HelveticaNeue", size: 15)
 			label.textColor = index == 1 ? selectedLabelColor : unselectedLabelColor
+			label.translatesAutoresizingMaskIntoConstraints = false
 			self.addSubview(label)
 			labels.append(label)
 		}
 	}
 	
 	func displayNewSelectedIndex(){
-		for (index, item) in labels.enumerated() {
+		for item in labels {
 			item.textColor = unselectedLabelColor
 		}
 		
@@ -54,9 +55,30 @@ import UIKit
 		label.textColor = selectedLabelColor
 		
 		UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: .allowAnimatedContent, animations: {
-			self.thumbview.frame = label.frame
+			self.thumbView.frame = label.frame
 		}) { (completion) in
 			//TODO
+		}
+	}
+	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		
+		var selectFrame = self.bounds
+		let newWidth = selectFrame.width  / CGFloat(items.count)
+		selectFrame.size.width = newWidth
+		thumbView.frame = selectFrame
+		thumbView.backgroundColor = thumbColor
+		thumbView.layer.cornerRadius = thumbView.frame.height / 2
+		
+		let labelHeight = self.frame.height
+		let labelWidth = self.frame.width / CGFloat(labels.count)
+		
+		for index in 0...labels.count - 1 {
+			var label = labels[index]
+			
+			let xPosition = CGFloat(index) * labelWidth
+			label.frame = CGRect(x: xPosition, y: 0, width: labelWidth, height: labelHeight)
 		}
 	}
 	
@@ -136,8 +158,8 @@ import UIKit
 		setUpView()
 	}
 	
-	required init?(coder: NSCoder){
-		super.init(coder: coder)
+	required init?(coder aDecoder: NSCoder) {
+		super.init(coder: aDecoder)
 		setUpView()
 	}
 	
@@ -147,8 +169,8 @@ import UIKit
 		layer.borderWidth = 2
 		
 		backgroundColor = UIColor.clear
+		layer.masksToBounds = true 
 		setUpLabels()
+		insertSubview(thumbView, at: 0)
 	}
-	
-	
 }
