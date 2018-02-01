@@ -46,18 +46,18 @@ import UIKit
 	}
 	
 	func displayNewSelectedIndex(){
-		for (index, item) in EnumeratedSequence(labels) {
+		for (index, item) in labels.enumerated() {
 			item.textColor = unselectedLabelColor
 		}
 		
 		var label = labels[selectedIndex]
 		label.textColor = selectedLabelColor
 		
-		UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: nil, animations: {
-			
-			self.thumbView.frame = label.frame
-			
-		}, completion: nil)
+		UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.8, options: .allowAnimatedContent, animations: {
+			self.thumbview.frame = label.frame
+		}) { (completion) in
+			//TODO
+		}
 	}
 	
 	
@@ -65,7 +65,7 @@ import UIKit
 		let location = touch.location(in: self)
 		
 		var calculatedIndex : Int?
-		for (index, item) in EnumeratedSequence(labels) {
+		for (index, item) in labels.enumerated() {
 			if item.frame.contains(location) {
 				calculatedIndex = index
 			}
@@ -74,7 +74,7 @@ import UIKit
 		
 		if calculatedIndex != nil {
 			selectedIndex = calculatedIndex!
-			sendActionsForControlEvents(.ValueChanged)
+			sendActions(for: .valueChanged)
 		}
 		
 		return false
@@ -143,7 +143,7 @@ import UIKit
 	
 	func setUpView(){
 		layer.cornerRadius = frame.height / 2
-		layer.borderColor = UIColor(white: 1.0, alpha: 0.5).CGColor
+		layer.borderColor = UIColor(white: 1.0, alpha: 0.5).cgColor
 		layer.borderWidth = 2
 		
 		backgroundColor = UIColor.clear
