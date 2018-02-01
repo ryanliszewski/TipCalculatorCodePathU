@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		13F1CBE3F0E9DD3BF3041C70 /* Pods_iTipDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D164DF40F007F7CBF441F3C /* Pods_iTipDemoTests.framework */; };
 		6D7FF58FF2421576F4862857 /* Pods_iTipDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DBB05CDED6C0DD6433E5BAB /* Pods_iTipDemo.framework */; };
+		7301A4692022F12A001C46C7 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7301A4682022F12A001C46C7 /* CustomSegmentedControl.swift */; };
 		7383F8A21FD9EAC100D7AD1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7383F8A11FD9EAC100D7AD1C /* AppDelegate.swift */; };
 		7383F8AA1FD9EAC100D7AD1C /* iTipDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7383F8A81FD9EAC100D7AD1C /* iTipDemo.xcdatamodeld */; };
 		7383F8AC1FD9EAC100D7AD1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7383F8AB1FD9EAC100D7AD1C /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		4D164DF40F007F7CBF441F3C /* Pods_iTipDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTipDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DBB05CDED6C0DD6433E5BAB /* Pods_iTipDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTipDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C0C251F4AB7CF21F400E746 /* Pods-iTipDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTipDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iTipDemoTests/Pods-iTipDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		7301A4682022F12A001C46C7 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		7383F89E1FD9EAC100D7AD1C /* iTipDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTipDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7383F8A11FD9EAC100D7AD1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7383F8A91FD9EAC100D7AD1C /* iTipDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iTipDemo.xcdatamodel; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				7301A4672022F0AE001C46C7 /* Storyboards */,
 				736DD1642022F0580058E531 /* View Controllers */,
 				736DD1632022F0410058E531 /* Extensions */,
+				7301A4682022F12A001C46C7 /* CustomSegmentedControl.swift */,
 			);
 			path = iTipDemo;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 				7383F8A21FD9EAC100D7AD1C /* AppDelegate.swift in Sources */,
 				7383F8D71FDA179900D7AD1C /* SettingsViewController.swift in Sources */,
 				73A0C08A201FFD8A0092CAA9 /* BackNextKeyboardToolBarExtension.swift in Sources */,
+				7301A4692022F12A001C46C7 /* CustomSegmentedControl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
