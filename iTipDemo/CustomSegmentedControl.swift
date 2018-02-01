@@ -13,7 +13,7 @@ import UIKit
 	private var labels = [UILabel]()
 	var thumbView = UIView()
 	
-	var items:[String] = ["15%", "20%", "25%"] {
+	var items:[String] = ["15%", "18%", "20%", "25%"] {
 		didSet {
 			setUpLabels()
 		}
@@ -38,7 +38,7 @@ import UIKit
 			label.text = items[index - 1]
 			label.backgroundColor = UIColor.clear
 			label.textAlignment = .center
-			label.font = UIFont(name: "HelveticaNeue", size: 15)
+			label.font = UIFont(name: "HelveticaNeue-Bold", size: 15)
 			label.textColor = index == 1 ? selectedLabelColor : unselectedLabelColor
 			label.translatesAutoresizingMaskIntoConstraints = false
 			self.addSubview(label)
@@ -58,7 +58,6 @@ import UIKit
 			self.thumbView.frame = label.frame
 			self.thumbView.layer.shadowRadius = 100.0
 			self.updateThumbViewShadow(index: self.selectedIndex)
-			
 			
 		}) { (completion) in
 			//TODO
@@ -132,6 +131,8 @@ import UIKit
 			setSelectedColors()
 		}
 	}
+	
+
 	
 	@IBInspectable var unselectedLabelColor: UIColor = UIColor.white {
 		didSet {

@@ -30,7 +30,6 @@ class TipViewController: UIViewController, UIToolbarDelegate {
  
   @IBOutlet weak var totalAmountView: UIView!
   @IBOutlet weak var segmentedTipControlView: UIView!
-  @IBOutlet weak var segmentedTipControl: UISegmentedControl!
   @IBOutlet weak var tipAmountView: UIView!
 	
 	var backButton = UIBarButtonItem()
@@ -49,30 +48,30 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 		
 		setUpTipAmountView()
 		setUpTotalAmountView()
-		setUpSegmentedControl()
+		//setUpSegmentedControl()
     addNextBackKeyboardToolBar()
 		setUpNumberOfPeopleView()
   }
 	
   func calculateTip(stringAmount: String){
 		
-		if let amount = Double(stringAmount){
-			let tipAmount = amount * tipAmounts[segmentedTipControl.selectedSegmentIndex]
-			let totalAmount = amount + tipAmount
-			
-			let formatter = NumberFormatter()
-			formatter.locale = Locale.current
-			
-			formatter.numberStyle = .currency
-			
-			if let formattedTipAmount = formatter.string(from: tipAmount as NSNumber) {
-				tipAmountLabel.text = formattedTipAmount
-			}
-			
-			if let formattedTotalAmount = formatter.string(from: totalAmount as NSNumber) {
-				totalAmountLabel.text = formattedTotalAmount
-			}
-		}
+//		if let amount = Double(stringAmount){
+////			let tipAmount = amount * tipAmounts[segmentedTipControl.selectedSegmentIndex]
+////			let totalAmount = amount + //tipAmount
+//			
+//			let formatter = NumberFormatter()
+//			formatter.locale = Locale.current
+//			
+//			formatter.numberStyle = .currency
+//			
+////			if let formattedTipAmount = formatter.string(from: //tipAmount as NSNumber) {
+////				tipAmountLabel.text = formattedTipAmount
+////			}
+//			
+//			if let formattedTotalAmount = formatter.string(from: totalAmount as NSNumber) {
+//				totalAmountLabel.text = formattedTotalAmount
+//			}
+//		}
   }
 }
 
@@ -116,20 +115,20 @@ extension TipViewController {
 		totalAmountTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 	}
 	
-	fileprivate func setUpSegmentedControl(){
-		
-		segmentedTipControl.layer.cornerRadius = 10.0
-		segmentedTipControl.layer.masksToBounds = true
-		segmentedTipControl.layer.borderColor = UIColor.white.cgColor
-		segmentedTipControl.layer.borderWidth = 1.0
-		segmentedTipControl.layer.shadowColor = UIColor.gray.cgColor
-		segmentedTipControl.layer.shadowOffset = CGSize(width: 5, height: 5)
-		segmentedTipControl.layer.shadowOpacity = 0.5
-		segmentedTipControl.layer.shadowRadius = 5.0
-		segmentedTipControl.alpha = 0
-		
-		segmentedTipControlViewOriginY = segmentedTipControlView.frame.origin.y
-	}
+//	fileprivate func setUpSegmentedControl(){
+//		
+//		segmentedTipControl.layer.cornerRadius = 10.0
+//		segmentedTipControl.layer.masksToBounds = true
+//		segmentedTipControl.layer.borderColor = UIColor.white.cgColor
+//		segmentedTipControl.layer.borderWidth = 1.0
+//		segmentedTipControl.layer.shadowColor = UIColor.gray.cgColor
+//		segmentedTipControl.layer.shadowOffset = CGSize(width: 5, height: 5)
+//		segmentedTipControl.layer.shadowOpacity = 0.5
+//		segmentedTipControl.layer.shadowRadius = 5.0
+//		segmentedTipControl.alpha = 0
+//		
+//		segmentedTipControlViewOriginY = segmentedTipControlView.frame.origin.y
+//	}
 	
 	fileprivate func setUpNumberOfPeopleView(){
 		numberOfPeopleView.addDropShadow()
@@ -176,7 +175,7 @@ extension TipViewController {
 				
 				self.segmentedTipControlView.frame.origin.y = self.segmentedTipControlView.frame.origin.y - self.tipAmountView.frame.height * 1.5
 				
-				self.segmentedTipControl.alpha = 1
+				//self.segmentedTipControl.alpha = 1
 				self.tipAmountView.alpha = 1
 			}
 		}
@@ -187,7 +186,7 @@ extension TipViewController {
 			self.totalAmountView.frame.origin.y = self.totalAmountViewOriginY!
 			self.segmentedTipControlView.frame.origin.y = self.segmentedTipControlViewOriginY!
 			self.tipAmountView.frame.origin.y = self.tipAmountViewOriginY!
-			self.segmentedTipControl.alpha = 0
+			//self.segmentedTipControl.alpha = 0
 			self.tipAmountView.alpha = 0
 		}
 	}
