@@ -29,9 +29,9 @@ class TipViewController: UIViewController, UIToolbarDelegate {
   var totalAmountViewOriginY: CGFloat?
   var segmentedTipControlViewOriginY: CGFloat?
   var tipAmountViewOriginY: CGFloat?
+	var keyboardHeight: CGFloat?
  
   @IBOutlet weak var totalAmountView: UIView!
-  @IBOutlet weak var segmentedTipControlView: UIView!
   @IBOutlet weak var tipAmountView: UIView!
 	
 	var backButton = UIBarButtonItem()
@@ -55,28 +55,44 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 		setUpNumberOfPeopleView()
 		
 		segmentedTipControl.addTarget(self, action: #selector(self.onSegmentedControlIndexChanged(_:)), for: .valueChanged)
+		
+		segmentedTipControlViewOriginY = segmentedTipControl.frame.origin.y
+		
+		
+		
   }
 	
   func calculateTip(stringAmount: String){
 		
-//		if let amount = Double(stringAmount){
-////			let tipAmount = amount * tipAmounts[segmentedTipControl.selectedSegmentIndex]
-////			let totalAmount = amount + //tipAmount
-//			
-//			let formatter = NumberFormatter()
-//			formatter.locale = Locale.current
-//			
-//			formatter.numberStyle = .currency
-//			
-////			if let formattedTipAmount = formatter.string(from: //tipAmount as NSNumber) {
-////				tipAmountLabel.text = formattedTipAmount
-////			}
-//			
-//			if let formattedTotalAmount = formatter.string(from: totalAmount as NSNumber) {
-//				totalAmountLabel.text = formattedTotalAmount
-//			}
-//		}
+		if let amount = Double(stringAmount){
+			let tipAmount = amount * tipAmounts[segmentedTipControl.selectedIndex]
+			let totalAmount = amount + tipAmount
+			
+			let formatter = NumberFormatter()
+			formatter.locale = Locale.current
+			
+			formatter.numberStyle = .currency
+			
+			if let formattedTipAmount = formatter.string(from: tipAmount as NSNumber) {
+				tipAmountLabel.text = formattedTipAmount
+			}
+		
+			if let formattedTotalAmount = formatter.string(from: totalAmount as NSNumber) {
+				totalAmountLabel.text = formattedTotalAmount
+			}
+		}
   }
+	
+}
+
+//MARK: - Subscriptions
+extension TipViewController {
+	func addSubscriptions(){
+		
+		segmentedTipControl.addTarget(self, action: #selector(self.onSegmentedControlIndexChanged(_:)), for: .valueChanged)
+		
+		NotificationCenter.default.addObserver(self, selector: "keyboardWillShow", name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+	}
 }
 
 //MARK: - UI
@@ -119,21 +135,6 @@ extension TipViewController {
 		totalAmountTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
 	}
 	
-//	fileprivate func setUpSegmentedControl(){
-//		
-//		segmentedTipControl.layer.cornerRadius = 10.0
-//		segmentedTipControl.layer.masksToBounds = true
-//		segmentedTipControl.layer.borderColor = UIColor.white.cgColor
-//		segmentedTipControl.layer.borderWidth = 1.0
-//		segmentedTipControl.layer.shadowColor = UIColor.gray.cgColor
-//		segmentedTipControl.layer.shadowOffset = CGSize(width: 5, height: 5)
-//		segmentedTipControl.layer.shadowOpacity = 0.5
-//		segmentedTipControl.layer.shadowRadius = 5.0
-//		segmentedTipControl.alpha = 0
-//		
-//		segmentedTipControlViewOriginY = segmentedTipControlView.frame.origin.y
-//	}
-	
 	fileprivate func setUpNumberOfPeopleView(){
 		numberOfPeopleView.addDropShadow()
 	}
@@ -163,12 +164,15 @@ extension TipViewController {
 		print("Back button tapped")
 	}
 	
-	@IBAction func segmentedControllerValuedDidChange(_ sender: Any) {
+	@objc fileprivate func onSegmentedControlIndexChanged(_ sender: Any){
 		calculateTip(stringAmount: totalAmountTextField.text!)
 	}
 	
-	@objc fileprivate func onSegmentedControlIndexChanged(_ sender: Any){
-		
+	fileprivate func keyboardWillShow(_ notification: NSNotification){
+		if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+			let keyboardRectangle = keyboardFrame.cgRectValue
+			keyboardHeight = keyboardRectangle.height
+		}
 	}
 }
 
@@ -181,7 +185,7 @@ extension TipViewController {
 				
 				self.tipAmountView.frame.origin.y = self.tipAmountView.frame.origin.y - self.tipAmountView.frame.height * 1.5
 				
-				self.segmentedTipControlView.frame.origin.y = self.segmentedTipControlView.frame.origin.y - self.tipAmountView.frame.height * 1.5
+				self.segmentedTipControl.frame.origin.y = self.segmentedTipControl.frame.origin.y - self.tipAmountView.frame.height * 1.5
 				
 				//self.segmentedTipControl.alpha = 1
 				self.tipAmountView.alpha = 1
@@ -192,9 +196,9 @@ extension TipViewController {
 	func animateViewDown(){
 		UIView.animate(withDuration: 0.3) {
 			self.totalAmountView.frame.origin.y = self.totalAmountViewOriginY!
-			self.segmentedTipControlView.frame.origin.y = self.segmentedTipControlViewOriginY!
+			self.segmentedTipControl.frame.origin.y = self.segmentedTipControlViewOriginY!
 			self.tipAmountView.frame.origin.y = self.tipAmountViewOriginY!
-			//self.segmentedTipControl.alpha = 0
+			self.segmentedTipControl.alpha = 0
 			self.tipAmountView.alpha = 0
 		}
 	}
