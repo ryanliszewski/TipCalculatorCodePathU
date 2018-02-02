@@ -7,7 +7,6 @@ target 'iTipDemo' do
 
   # Pods for iTipDemo
 
-  pod 'SkyFloatingLabelTextField', '~> 3.0'
 
   target 'iTipDemoTests' do
     inherit! :search_paths

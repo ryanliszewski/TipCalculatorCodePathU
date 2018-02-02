@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SkyFloatingLabelTextField
+
 
 class TipViewController: UIViewController, UIToolbarDelegate {
   
@@ -18,13 +18,13 @@ class TipViewController: UIViewController, UIToolbarDelegate {
     static let percentage25 = 0.25
   }
   
+	@IBOutlet weak var totalAmountTextField: UITextField!
 	@IBOutlet weak var segmentedTipControl: CustomSegmentedControl!
 	@IBOutlet weak var customTipLabel: UILabel!
 	@IBOutlet weak var numberOfPeopleView: UIView!
 	@IBOutlet weak var numberOfPeopleCollectionView: UICollectionView!
 	@IBOutlet weak var tipAmountLabel: UILabel!
   @IBOutlet weak var totalAmountLabel: UILabel!
-	@IBOutlet weak var totalAmountTextField: SkyFloatingLabelTextField!
   var isViewAnimatedUp: Bool = false
   var totalAmountViewOriginY: CGFloat?
   var segmentedTipControlViewOriginY: CGFloat?
@@ -53,6 +53,8 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 		//setUpSegmentedControl()
     addNextBackKeyboardToolBar()
 		setUpNumberOfPeopleView()
+		
+		segmentedTipControl.addTarget(self, action: #selector(self.onSegmentedControlIndexChanged(_:)), for: .valueChanged)
   }
 	
   func calculateTip(stringAmount: String){
@@ -163,6 +165,10 @@ extension TipViewController {
 	
 	@IBAction func segmentedControllerValuedDidChange(_ sender: Any) {
 		calculateTip(stringAmount: totalAmountTextField.text!)
+	}
+	
+	@objc fileprivate func onSegmentedControlIndexChanged(_ sender: Any){
+		
 	}
 }
 
