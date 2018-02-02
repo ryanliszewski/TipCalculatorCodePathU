@@ -18,6 +18,8 @@ class TipViewController: UIViewController, UIToolbarDelegate {
     static let percentage25 = 0.25
   }
   
+	@IBOutlet weak var segmentedTipControl: CustomSegmentedControl!
+	@IBOutlet weak var customTipLabel: UILabel!
 	@IBOutlet weak var numberOfPeopleView: UIView!
 	@IBOutlet weak var numberOfPeopleCollectionView: UICollectionView!
 	@IBOutlet weak var tipAmountLabel: UILabel!

@@ -141,6 +141,13 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipN-ih-tQK">
+                                        <rect key="frame" x="110" y="36" width="42" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -183,8 +190,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="customTipLabel" destination="ipN-ih-tQK" id="0P1-BI-6wG"/>
                         <outlet property="numberOfPeopleCollectionView" destination="LIm-Yu-EVC" id="ISz-m4-Wq0"/>
                         <outlet property="numberOfPeopleView" destination="zG7-Wa-k9R" id="jzh-pQ-2Ge"/>
+                        <outlet property="segmentedTipControl" destination="qES-q0-FH8" id="1Ar-PP-oYm"/>
                         <outlet property="segmentedTipControlView" destination="2ix-U0-lIK" id="54l-cU-qRY"/>
                         <outlet property="tipAmountLabel" destination="8Jy-BE-pO1" id="qvh-hk-MwB"/>
                         <outlet property="tipAmountView" destination="BhI-eG-6sX" id="koj-8W-Nbk"/>
