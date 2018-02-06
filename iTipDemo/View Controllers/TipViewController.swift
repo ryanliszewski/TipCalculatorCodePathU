@@ -10,14 +10,7 @@ import UIKit
 
 
 class TipViewController: UIViewController, UIToolbarDelegate {
-  
-  enum tip {
-    static let percentage15 = 0.15
-    static let percentage18 = 0.18
-    static let percentage20 = 0.20
-    static let percentage25 = 0.25
-  }
-  
+	
 	@IBOutlet weak var totalAmountTextField: UITextField!
 	@IBOutlet weak var segmentedTipControl: CustomSegmentedControl!
 	@IBOutlet weak var customTipLabel: UILabel!
@@ -27,7 +20,7 @@ class TipViewController: UIViewController, UIToolbarDelegate {
   @IBOutlet weak var totalAmountLabel: UILabel!
   var isViewAnimatedUp: Bool = false
   var totalAmountViewOriginY: CGFloat?
-  var segmentedTipControlViewOriginY: CGFloat?
+	var segmentedTipControlViewOriginY: CGFloat?
   var tipAmountViewOriginY: CGFloat?
 	var keyboardHeight: CGFloat?
  
@@ -50,16 +43,9 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 		
 		setUpTipAmountView()
 		setUpTotalAmountView()
-		//setUpSegmentedControl()
     addNextBackKeyboardToolBar()
 		setUpNumberOfPeopleView()
-		
-		segmentedTipControl.addTarget(self, action: #selector(self.onSegmentedControlIndexChanged(_:)), for: .valueChanged)
-		
-		segmentedTipControlViewOriginY = segmentedTipControl.frame.origin.y
-		
-		
-		
+		setUpSegmentedTipControl()
   }
 	
   func calculateTip(stringAmount: String){
@@ -82,7 +68,6 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 			}
 		}
   }
-	
 }
 
 //MARK: - Subscriptions
@@ -91,7 +76,7 @@ extension TipViewController {
 		
 		segmentedTipControl.addTarget(self, action: #selector(self.onSegmentedControlIndexChanged(_:)), for: .valueChanged)
 		
-		NotificationCenter.default.addObserver(self, selector: "keyboardWillShow", name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+		NotificationCenter.default.addObserver(self, selector: Selector(("keyboardWillShow")), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 	}
 }
 
@@ -120,6 +105,11 @@ extension TipViewController {
 		tipAmountView.alpha = 0
 		
 		tipAmountViewOriginY = tipAmountView.frame.origin.y
+	}
+	
+	fileprivate func setUpSegmentedTipControl(){
+		segmentedTipControlViewOriginY = segmentedTipControl.frame.origin.y
+		segmentedTipControl.alpha = 0;
 	}
 	
 	fileprivate func setUpTotalAmountView(){
@@ -168,7 +158,7 @@ extension TipViewController {
 		calculateTip(stringAmount: totalAmountTextField.text!)
 	}
 	
-	fileprivate func keyboardWillShow(_ notification: NSNotification){
+	@objc fileprivate func keyboardWillShow(_ notification: NSNotification){
 		if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
 			let keyboardRectangle = keyboardFrame.cgRectValue
 			keyboardHeight = keyboardRectangle.height
