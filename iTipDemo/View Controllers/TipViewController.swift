@@ -22,7 +22,14 @@ class TipViewController: UIViewController, UIToolbarDelegate {
   var totalAmountViewOriginY: CGFloat?
 	var segmentedTipControlViewOriginY: CGFloat?
   var tipAmountViewOriginY: CGFloat?
-	var keyboardHeight: CGFloat?
+	
+	var keyboardHeight: CGFloat?  {
+		didSet {
+			
+		}
+	}
+	
+	var toolBarHeight: CGFloat?
  
   @IBOutlet weak var totalAmountView: UIView!
   @IBOutlet weak var tipAmountView: UIView!
@@ -128,6 +135,11 @@ extension TipViewController {
 	fileprivate func setUpNumberOfPeopleView(){
 		numberOfPeopleView.addDropShadow()
 	}
+	
+	fileprivate func initalizeUI(){
+		
+	}
+	
 }
 
 //MARK: - UI Actions
@@ -172,6 +184,7 @@ extension TipViewController {
 		if (!(totalAmountTextField.text?.isEmpty)!){
 			UIView.animate(withDuration: 0.3) {
 				self.totalAmountView.frame.origin.y = self.totalAmountView.frame.origin.y -  self.totalAmountView.frame.size.height / 1.5 +  self.totalAmountTextField.frame.size.height
+				
 				
 				self.tipAmountView.frame.origin.y = self.tipAmountView.frame.origin.y - self.tipAmountView.frame.height * 1.5
 				
