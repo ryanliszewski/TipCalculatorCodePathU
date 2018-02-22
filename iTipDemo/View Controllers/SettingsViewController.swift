@@ -13,11 +13,11 @@ class SettingsViewController: UIViewController {
   @IBOutlet weak var segmentedTipControl: UISegmentedControl!
 
   override func viewDidLoad() {
-        super.viewDidLoad()
-    
-    
-    }
-  
+		super.viewDidLoad()
+
+	
+	}
+
   @IBAction func onSegmentedTipValueChanged(_ sender: Any) {
     let defaults = UserDefaults.standard
     

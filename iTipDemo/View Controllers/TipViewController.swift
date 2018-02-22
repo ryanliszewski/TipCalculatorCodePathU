@@ -14,8 +14,8 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 	@IBOutlet weak var totalAmountTextField: UITextField!
 	@IBOutlet weak var segmentedTipControl: CustomSegmentedControl!
 	@IBOutlet weak var customTipLabel: UILabel!
-	@IBOutlet weak var numberOfPeopleView: UIView!
-	@IBOutlet weak var numberOfPeopleCollectionView: UICollectionView!
+
+	
 	@IBOutlet weak var tipAmountLabel: UILabel!
   @IBOutlet weak var totalAmountLabel: UILabel!
   var isViewAnimatedUp: Bool = false
@@ -25,7 +25,6 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 	
 	var keyboardHeight: CGFloat?  {
 		didSet {
-			
 		}
 	}
 	
@@ -36,7 +35,7 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 	
 	var backButton = UIBarButtonItem()
   
-  var tipAmounts = [0.15, 0.18, 0.20, 0.25]
+  var tipAmounts = [0.10, 0.15, 0.18, 0.20, 0.25]
   
   override func viewDidLoad() {
 		super.viewDidLoad()
@@ -48,11 +47,9 @@ class TipViewController: UIViewController, UIToolbarDelegate {
 		gradiantLayer.endPoint = CGPoint(x: 1, y: 1)
 		//gradiantLayer.colors =
 		
-		setUpTipAmountView()
-		setUpTotalAmountView()
-    addNextBackKeyboardToolBar()
-		setUpNumberOfPeopleView()
-		setUpSegmentedTipControl()
+		
+		initializeUI()
+		addSubscriptions()
   }
 	
   func calculateTip(stringAmount: String){
@@ -83,12 +80,22 @@ extension TipViewController {
 		
 		segmentedTipControl.addTarget(self, action: #selector(self.onSegmentedControlIndexChanged(_:)), for: .valueChanged)
 		
-		NotificationCenter.default.addObserver(self, selector: Selector(("keyboardWillShow")), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 	}
 }
 
 //MARK: - UI
 extension TipViewController {
+	
+	fileprivate func initializeUI(){
+		setUpTipAmountView()
+		setUpTotalAmountView()
+		setUpSegmentedTipControl()
+		
+		removeNavigationBarBottomBorder()
+		setUpNaviationBarBackButton()
+	}
+	
 	fileprivate func addNextBackKeyboardToolBar(){
 		//FINISH
 		let nextBackToolBar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44.0))
@@ -130,10 +137,6 @@ extension TipViewController {
 		totalAmountViewOriginY = totalAmountView.frame.origin.y
 		
 		totalAmountTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-	}
-	
-	fileprivate func setUpNumberOfPeopleView(){
-		numberOfPeopleView.addDropShadow()
 	}
 	
 	fileprivate func initalizeUI(){
@@ -183,14 +186,14 @@ extension TipViewController {
 	func animateViewUp(){
 		if (!(totalAmountTextField.text?.isEmpty)!){
 			UIView.animate(withDuration: 0.3) {
-				self.totalAmountView.frame.origin.y = self.totalAmountView.frame.origin.y -  self.totalAmountView.frame.size.height / 1.5 +  self.totalAmountTextField.frame.size.height
+				self.totalAmountView.frame.origin.y = self.totalAmountView.frame.origin.y -  self.totalAmountView.frame.origin.y * 1.5
 				
 				
 				self.tipAmountView.frame.origin.y = self.tipAmountView.frame.origin.y - self.tipAmountView.frame.height * 1.5
 				
 				self.segmentedTipControl.frame.origin.y = self.segmentedTipControl.frame.origin.y - self.tipAmountView.frame.height * 1.5
 				
-				//self.segmentedTipControl.alpha = 1
+				self.segmentedTipControl.alpha = 1
 				self.tipAmountView.alpha = 1
 			}
 		}
